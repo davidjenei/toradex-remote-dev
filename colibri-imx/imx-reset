@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo Resetting Colibri imx6...
+gpioset 0 12=0 && sleep 0.1 && gpioset 0 12=1 && echo Done!

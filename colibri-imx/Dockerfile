@@ -1,0 +1,14 @@
+FROM debian:buster-slim
+
+EXPOSE 22
+
+RUN apt-get -y update && apt-get install -y \
+    microcom openssh-client openssh-server gpiod bmap-tools \
+    && apt-get clean && apt-get autoremove && rm -rf /var/lib/apt/lists/*
+
+COPY imx-reset /usr/local/bin/
+COPY imx-serial /usr/local/bin/
+COPY README.md /root/
+
+COPY entrypoint.sh /
+CMD ["/entrypoint.sh"]

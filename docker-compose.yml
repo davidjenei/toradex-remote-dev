@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  colibri-imx-dev:
+    container_name: colibri-imx-dev
+    hostname: colibri-imx-dev
+    build: ./colibri-imx
+    devices:
+      - /dev/ttyS1:/dev/colibri-imx-console   # debug serial
+      - /dev/gpiochip0                        # reset
+    ports:
+      - '23222:22'
+    extra_hosts:
+      - colibri-imx:192.168.100.100
+    volumes:
+      - ./colibri-imx/.ssh/authorized_keys:/root/.ssh/authorized_keys:ro
+

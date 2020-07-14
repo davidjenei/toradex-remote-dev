@@ -1,0 +1,3 @@
+KERNEL=="sd?", SUBSYSTEM=="block", ATTRS{idProduct}=="4011", ATTRS{idVendor}=="1b67", ATTRS{serial}=="04872296", ACTION=="add", RUN+="/home/djen/server/colibri-ums-cgroup.sh $major $minor allow"
+KERNEL=="sd?", SUBSYSTEM=="block", ATTRS{idProduct}=="4011", ATTRS{idVendor}=="1b67", ATTRS{serial}=="04872296", ACTION=="remove", RUN+="/home/djen/server/colibri-ums-cgroup.sh $major $minor deny"
+
