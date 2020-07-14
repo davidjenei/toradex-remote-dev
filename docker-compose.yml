@@ -11,7 +11,8 @@ services:
     ports:
       - '23222:22'
     extra_hosts:
-      - colibri-imx:192.168.100.100
+      - colibri-imx:192.168.100.100           # ethernet
     volumes:
       - ./colibri-imx/.ssh/authorized_keys:/root/.ssh/authorized_keys:ro
+      - ./colibri-imx/.bashrc:/root/.bashrc
 
