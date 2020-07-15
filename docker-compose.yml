@@ -4,15 +4,28 @@ services:
   colibri-imx-dev:
     container_name: colibri-imx-dev
     hostname: colibri-imx-dev
-    build: ./colibri-imx
+    build: ./dev-imx-docker
     devices:
-      - /dev/ttyS1:/dev/colibri-imx-console   # debug serial
-      - /dev/gpiochip0                        # reset
+      - /dev/ttyS1:/dev/imx-console           # debug serial
+      - /dev/gpiochip0                        # external reset
     ports:
       - '23222:22'
     extra_hosts:
-      - colibri-imx:192.168.100.100           # ethernet
+      - imx:192.168.100.100                   # ethernet
     volumes:
-      - ./colibri-imx/.ssh/authorized_keys:/root/.ssh/authorized_keys:ro
-      - ./colibri-imx/.bashrc:/root/.bashrc
+      - ./colibri-imx/.bashrc:/root/.bashrc:ro
+      - ./data/.ssh/authorized_keys:/root/.ssh/authorized_keys:ro
 
+  apalis-imx-dev:
+    container_name: apalis-imx-dev
+    hostname: apalis-imx-dev
+    build: ./dev-imx-docker
+    devices:
+      - /dev/ttyUSB0:/dev/imx-console
+    ports:
+      - '23223:22'
+    extra_hosts:
+      - imx:192.168.100.110
+    volumes:
+      - ./apalis-imx/.bashrc:/root/.bashrc:ro
+      - ./data/.ssh/authorized_keys:/root/.ssh/authorized_keys:ro

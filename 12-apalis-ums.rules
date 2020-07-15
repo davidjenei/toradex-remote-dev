@@ -1,0 +1,3 @@
+KERNEL=="sd?", SUBSYSTEM=="block", SUBSYSTEMS=="usb", ATTRS{idProduct}=="4030", ATTRS{idVendor}=="0525", ATTRS{serial}=="636d6d2f7665642f", ACTION=="add", RUN+="/home/djen/server/colibri-ums-cgroup.sh $major $minor allow apalis-imx-dev"
+KERNEL=="sd?", SUBSYSTEM=="block", SUBSYSTEMS=="usb", ATTRS{idProduct}=="4030", ATTRS{idVendor}=="0525", ATTRS{serial}=="636d6d2f7665642f", ACTION=="remove", RUN+="/home/djen/server/colibri-ums-cgroup.sh $major $minor deny apalis-imx-dev"
+
